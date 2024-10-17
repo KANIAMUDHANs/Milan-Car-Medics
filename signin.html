@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milan Detail Medics | Sign-In Page</title>
+    <link rel="icon" href="./images/milanDigitalMedicsLogo.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="background">
+        <div class="sign_in">
+            <div class="singin-details">
+                <div class="himg">
+                  <a href="./index.html"><img src="./images/milanDigitalMedicsLogo.png"></a>
+                </div>
+                <hr style="border:1px solid rgb(223, 215, 215); " />
+                <div class="contents">
+                    <h1>Sign in</h1>
+                    <p>New User? <a href="./signup.html">Create an account</a> </p>
+                    <form>
+                        <label>Username</label><br />
+                        <input type="text" required id="email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                        </svg>
+                        <span id="emailError" class="error"></span><br/>
+                        <br />
+                        <label>Password</label><br />
+                        <input type="password" required id="password">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                            <path
+                                d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
+                            <path
+                                d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
+                        </svg><span id="passwordError" class="error"></span><br/><br />
+                        <div class="flx">
+                            <input type="checkbox" class="check">
+                            &nbsp; <p>Remember my password</p>
+                        </div><br />
+                </div>
+                <div class="btninfo">
+                    <button onclick="validation()">Sign In</button><br />
+                    <p>Forgot <a href="">Username</a> or <a href="">Password</a>?</p><br />
+                    <p><a href="">Terms of Services</a> and <a href="">Privacy Policy</a></p>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validation()
+        {
+          console.log("Clicked"); 
+      
+          event.preventDefault();
+          var email = document.getElementById('email').value;
+          var password = document.getElementById('password').value
+      
+          var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+      
+          document.getElementById('emailError').innerHTML = '';
+          document.getElementById('passwordError').innerHTML = '';
+
+          if (!emailRegex.test(email) && !passwordRegex.test(password)) {
+            alert('Please Enter Both Username and Password!');
+             }
+      
+          if (!emailRegex.test(email)) {
+                      document.getElementById('emailError').innerHTML = 'Invalid User Id';
+                  }
+      
+          if (!passwordRegex.test(password)) {
+                     document.getElementById('passwordError').innerHTML = 'Invalid Password';
+                  }
+      
+           if (emailRegex.test(email) && passwordRegex.test(password)) {
+                      alert("-WELCOME USER-");
+                      window.location.href = 'dashboard.html';
+      
+                  }
+              }
+           
+      </script>
+
+</body>
+</html>

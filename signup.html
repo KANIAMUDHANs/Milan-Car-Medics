@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milan Detail Medics | Sign-Up Page</title>
+    <link rel="icon" href="./images/milanDigitalMedicsLogo.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="background2">
+        <div class="sign_up">
+            <div class="singup-details">
+                <a href="./index.html">
+                    <div class="himg">
+                        <img src="./images/milanDigitalMedicsLogo.png">
+                </a>
+            </div>
+            <div class="contents1">
+                <form class="f1">
+                    <label>Email</label><br />
+                    <input type="text" required id="email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                    </svg>
+                    <span id="emailError" class="error"></span><br />
+
+                    <label>Password</label><br />
+                    <input type="password" required id="password">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
+                        <path
+                            d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
+                    </svg><span id="passwordError" class="error"></span><br />
+
+                    <label>Re-Enter Password</label><br />
+                    <input type="password" required id="rpassword">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
+                        <path
+                            d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
+                    </svg><span id="rpasswordError" class="error"></span><br />
+
+                    <div class="flx1">
+                        <input type="checkbox" class="check1">
+                        &nbsp;<p style="padding-top: 5px;"> I agree with terms & conditions </p>
+                    </div><br />
+                </form>
+            </div>
+            <div class="btninfo">
+                <button onclick="validation()">Create Account</button><br />
+            </div><br />
+            <div class="HR_line">
+                <hr style="width:50%;height:0%;border:1px solid gainsboro;">
+                <p style="position: relative; bottom: 8px; color: rgb(103, 102, 102)">OR</p>
+                <hr style="width:50%; height:0%;border:1px solid gainsboro;">
+            </div><br />
+            <div class="Acc">
+                <div style="background-color: #f4ededef;padding: 15px;border-radius: 10px;">
+                    <p style="color: rgb(103, 102, 102)">Already have an account? <a href="./signin.html">Sign in</a></p>
+                </div><br /><br />
+                <a style="color: rgb(103, 102, 102)" href="#">Cancel</a>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function validation() {
+            console.log("Clicked");
+    
+            event.preventDefault();
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var rpassword = document.getElementById('rpassword').value;
+    
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    
+            document.getElementById('emailError').innerHTML = '';
+            document.getElementById('passwordError').innerHTML = '';
+            document.getElementById('rpasswordError').innerHTML = '';
+    
+            if (!emailRegex.test(email) || !passwordRegex.test(password) || !passwordRegex.test(rpassword)) {
+                alert('Please fill all fields correctly!');
+                if (!emailRegex.test(email)) {
+                    document.getElementById('emailError').innerHTML = 'Enter a valid Email';
+                }
+                if (!passwordRegex.test(password)) {
+                    document.getElementById('passwordError').innerHTML = 'Password field must have at least 8 characters, including 1 digit, 1 lowercase, 1 uppercase letter';
+                }
+                if (!passwordRegex.test(rpassword)) {
+                    document.getElementById('rpasswordError').innerHTML = 'Re-enter password in the correct format';
+                }
+                return; // Stop further execution
+            }
+    
+            if (password !== rpassword) {
+                document.getElementById('rpasswordError').innerHTML = 'Passwords do not match';
+                return; // Stop further execution
+            }
+    
+            // If all validations pass, proceed to login
+            alert("-Account Created Successfully-");
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+    
+
+</body>
+
+</html>
